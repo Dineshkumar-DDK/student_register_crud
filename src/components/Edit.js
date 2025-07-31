@@ -11,7 +11,11 @@ const Edit = () => {
   useEffect(() => {
     axios
       .get(`https://student-register-backend-jtqr.onrender.com/${_id}`)
-      .then((res) => setData(res.data))
+       .then((res) => setData({
+        "Name": res?.data?.Name,
+        "Age": Number(res?.data?.Age),
+        "City": res?.data?.City
+    }))
       .catch((err) => console.log(err));
   }, []);
 
