@@ -10,7 +10,7 @@ const Edit = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/info/${_id}`)
+      .get(`https://student-register-backend-jtqr.onrender.com/${_id}`)
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   }, []);
@@ -18,7 +18,7 @@ const Edit = () => {
   function handleSubmit(event) {
     event.preventDefault();
     axios
-      .put(`http://localhost:5000/info/update/${_id}`, data)
+      .put(`https://student-management-system-server-ba7w.onrender.com/${_id}`, data)
       .then((res) => {
         alert("Data updated successfully!");
         navigate("/");
@@ -38,7 +38,7 @@ const Edit = () => {
                 disabled
                 name="id"
                 className="form-control"
-                value={data._id}
+                value={_id}
               />
             </div>
             <div>
