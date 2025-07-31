@@ -58,7 +58,7 @@ const Edit = () => {
                 name="age"
                 className="form-control"
                 value={data.Age}
-                onChange={(e) => setData({ ...data, Age: e.target.value })}
+                onChange={(e) => setData({ ...data, Age: Number(e.target.value) })}
               />
             </div>
             <div>
