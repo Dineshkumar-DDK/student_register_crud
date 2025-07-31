@@ -17569,5 +17569,8 @@
         "url": "https://github.com/sponsors/sindresorhus"
       }
     }
+  },
+  "dependencies": {
+    "react-icons": "^5.5.0"
   }
 }
