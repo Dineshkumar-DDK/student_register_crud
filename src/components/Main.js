@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { FaEdit, FaTrash } from 'react-icons/fa';
 
 
 const Main = () => {
@@ -8,7 +9,7 @@ const Main = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('http://localhost:5000/info')
+    axios.get('https://student-register-backend-jtqr.onrender.com')
       .then(res => setRecords(res.data))
       .catch(err => console.log(err));
   }, []);
@@ -16,9 +17,10 @@ const Main = () => {
   function handleDelete(id) {
     const conf = window.confirm('Do you want to delete?');
     if (conf) {
-      axios.delete(`http://localhost:5000/info/del/${id}`)
+      axios.delete(`https://student-register-backend-jtqr.onrender.com/${id}`)
         .then(res => {
           alert('Record has been deleted');
+          setRecords(res?.data?.data)
           navigate('/');
         })
         .catch(err => console.log(err));
@@ -48,12 +50,17 @@ const Main = () => {
                 <td>{d.Age}</td>
                 <td>{d.City}</td>
                 <td>
-                  <Link to={`/update/${d._id}`} className='btn btn-success me-2'>
-                    Update
+                  <Link to={`/update/${d._id}`} className='me-3 text-success' title="Edit">
+                    <FaEdit size={20} style={{ cursor: 'pointer' }} />
                   </Link>
-                  <button onClick={() => handleDelete(d._id)} className='btn btn-danger'>
-                    Delete
-                  </button>
+                  <span
+                    onClick={() => handleDelete(d._id)}
+                    className='text-danger'
+                    title="Delete"
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <FaTrash size={20} />
+                  </span>
                 </td>
               </tr>
             ))}
