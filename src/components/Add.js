@@ -10,7 +10,7 @@ const Add = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:5000/info", inputData)
+      .post("https://student-management-system-server-ba7w.onrender.com", inputData)
       .then((res) => {
         alert("Data Added Successfully");
         navigate("/");
